@@ -5,7 +5,7 @@ _Deep Flow Prediction_ is a framework for fluid flow
 It contains code for data generation, network training, and evaluation.
 Linux is highly recommended, and assumed as OS the following.
 
-The accompanying paper can be found here:
+The accompanying paper can soon be found here:
 <https://arxiv.org>
 
 Contributing authors:
