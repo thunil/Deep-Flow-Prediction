@@ -14,7 +14,7 @@ Contributing authors:
 You can also check out our TUM lab website with additional physics-based deep learning works at
 <https://ge.in.tum.de/research/>
 
-![An example inference result](https://github.com/thunil/Deep-Flow-Prediction/images/teaser.jpg)
+![An example inference result](resources/teaser.jpg)
 
 # A quick how-to
 
@@ -99,9 +99,10 @@ This can come in handy for automated runs with varying parameters.
 Below you can download a large-scale training data set, and the test data set
 used in the accompanying paper, as well as pre-trained models:
 
-((will be made available here soon))
+* a reduced data set with 6.4k samples plus test data: <http://ge.in.tum.de/download/data_6k.tar.gz>
+* ... more will be made available here soon
 
-![Additional inference results, download full resolution as PNG via the link below](https://github.com/thunil/Deep-Flow-Prediction/images/mixed_exp7_selection.jpg)
+![Additional inference results, download full resolution as PNG via the link below](resources/mixed_exp7_selection.jpg)
 <https://ge.in.tum.de/research/>
 
 
@@ -114,5 +115,5 @@ PDE solutions.
 Let us know if things don't work, or if you find ways to make it work even better :) !
 The authors, <https://ge.in.tum.de/>
 
-![TUM](https://github.com/thunil/Deep-Flow-Prediction/images/TUM.png)
+![TUM](resources/TUM.png)
 
