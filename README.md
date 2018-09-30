@@ -8,6 +8,9 @@ Linux is highly recommended, and assumed as OS the following.
 The accompanying paper can be found here:
 <https://arxiv.org>
 
+Contributing authors:
+*N. Thuerey, K. Weissenow, H. Mehrotra, N. Mainali, L. Prantl, Xiangyu Hu*
+
 You can also check out our TUM lab website with additional physics-based deep learning works at
 <https://ge.in.tum.de/research/>
 
@@ -110,4 +113,6 @@ PDE solutions.
 
 Let us know if things don't work, or if you find ways to make it work even better :) !
 The authors, <https://ge.in.tum.de/>
+
+![TUM](https://github.com/thunil/Deep-Flow-Prediction/images/TUM.png)
 

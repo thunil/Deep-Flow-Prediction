@@ -38,10 +38,10 @@ def find_absmax(data, use_targets, x):
 def LoaderNormalizer(data, isTest = False, shuffle = 0, dataProp = None):
     """
     # data: pass TurbDataset object with initialized dataDir / dataDirTest paths
-    # train: when off, process as test data (first load regular for normalization, then replace by test data)
-    # dataProp: proportions for loading & mixing 3 different data directories
-    #           contains [total-length, fraction-regular, fraction-superimposed, fraction-sheared],
-    #           passing None means off, load from single dir
+    # train: when off, process as test data (first load regular for normalization if needed, then replace by test data)
+    # dataProp: proportions for loading & mixing 3 different data directories "reg", "shear", "sup"
+    #           should be array with [total-length, fraction-regular, fraction-superimposed, fraction-sheared],
+    #           passing None means off, then loads from single directory
     """
 
     if dataProp is None:
@@ -50,6 +50,9 @@ def LoaderNormalizer(data, isTest = False, shuffle = 0, dataProp = None):
         files.sort()
         for i in range(shuffle):
             random.shuffle(files) 
+        if isTest:
+            print("Reducing data to load for tests")
+            files = files[0:min(10, len(files))]
         data.totalLength = len(files)
         data.inputs  = np.empty((len(files), 3, 128, 128))
         data.targets = np.empty((len(files), 3, 128, 128))
@@ -118,10 +121,12 @@ def LoaderNormalizer(data, isTest = False, shuffle = 0, dataProp = None):
 
     # normalize to -1..1 range, from min/max of predefined
     if fixedAirfoilNormalization:
-        # hard coded maxima 
+        # hard coded maxima , inputs dont change
         data.max_inputs_0 = 100.
         data.max_inputs_1 = 38.12
         data.max_inputs_2 = 1.0
+
+        # targets depend on normalization
         if makeDimLess:
             data.max_targets_0 = 4.65 
             data.max_targets_1 = 2.04
@@ -132,7 +137,8 @@ def LoaderNormalizer(data, isTest = False, shuffle = 0, dataProp = None):
             data.max_targets_1 = 200.
             data.max_targets_2 = 216.
             print("Using fixed maxima "+format( [data.max_targets_0,data.max_targets_1,data.max_targets_2] ))
-    else: # use current max values
+
+    else: # use current max values from loaded data
         data.max_inputs_0 = find_absmax(data, 0, 0)
         data.max_inputs_1 = find_absmax(data, 0, 1)
         data.max_inputs_2 = find_absmax(data, 0, 2) # mask, not really necessary
