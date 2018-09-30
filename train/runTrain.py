@@ -49,13 +49,13 @@ if len(sys.argv)>1:
     print("Output prefix: {}".format(prefix))
 
 autoIter   = False
-dropoutVal = 0.
+dropout    = 0.
 doLoad     = ""
 
 print("LR: {}".format(lrG))
 print("LR decay: {}".format(decayLr))
 print("Iterations: {}".format(iterations))
-print("Dropout: {}".format(dropoutVal))
+print("Dropout: {}".format(dropout))
 
 ##########################
 
@@ -77,7 +77,7 @@ print("Validation batches: {}".format(len(valiLoader)))
 
 # setup training
 epochs = int(iterations/len(trainLoader) + 0.5)
-netG = TurbNetG(channelExponent=expo, drv=dropoutVal)
+netG = TurbNetG(channelExponent=expo, dropout=dropout)
 print(netG) # print full net
 model_parameters = filter(lambda p: p.requires_grad, netG.parameters())
 params = sum([np.prod(p.size()) for p in model_parameters])

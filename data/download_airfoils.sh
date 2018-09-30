@@ -11,8 +11,13 @@ mkdir ./airfoil_database_test
 
 cd ./coord_seligFmt/
 
-# remove airfoils with text comments, TODO - they should be fixed rather than removed
+# cleanup:
+# remove airfoils with text comments, TODO - they should be fixed, rather than removed
 rm ag24.dat ag25.dat ag26.dat ag27.dat nasasc2-0714.dat goe795sm.dat
+# fix some non ascii ones
+sed -i 's/[\d128-\d255]//g' airfoil_database/goe187.dat
+sed -i 's/[\d128-\d255]//g' airfoil_database/goe188.dat
+sed -i 's/[\d128-\d255]//g' airfoil_database/goe235.dat
 
 # move only selected files to make sure we have the right sets
 echo moving...
