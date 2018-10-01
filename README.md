@@ -18,25 +18,36 @@ You can also check out our TUM lab website with additional physics-based deep le
 
 # A quick how-to
 
+All scripts below assume they're executed from their respective directories.
+
 ## Required software
 
 This codebase requires _PyTorch_ and _numpy_ for the deep learning part,
-and _openfoam_ and _gmsh_ for data generation and meshing. 
-To install these under linux run, e.g.: 
+and _openfoam_ and _gmsh_ for data generation and meshing (you don't need the latter 
+two if you download the pre-computed training data below). 
+To install these under linux run, use e.g.: 
 ```
+sudo pip install torch numpy
 sudo apt-get install openfoam5 gmsh
 ```
+(Details can be found on the installation pages of [PyTorch](https://pytorch.org/get-started/locally/) and 
+[OpenFOAM](https://openfoam.org/download/5-0-ubuntu/).)
 
-## Download arifoils
+## Data generation
 
-First, enter the `data` directory. All scripts assume they're executed
-from their respective directories.
+Note that you can skip the next two steps if you download the training
+data packages below. Simply make sure you have `data/train` and `data/test`
+in the source directory, then you can continue with the training step.
+
+### Download airfoils
+
+First, enter the `data` directory. 
 Download the airfoil profiles by running `./download_airfoils.sh`, this
 will create `airfoil_database` and `airfoil_database_test` directories.
 (The latter contains a subset that shouldn't be used for training.) The
 airfoild database should contain 1498 files afterwards.
 
-## Generate data
+### Generate data
 
 Now run `python ./dataGen.py` to generate a first set of 100 airfoils.
 This script executes _openfoam_ and runs _gmsh_ for meshing the airfoil profiles. 
