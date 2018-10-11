@@ -33,6 +33,8 @@ sudo apt-get install openfoam5 gmsh
 (Details can be found on the installation pages of [PyTorch](https://pytorch.org/get-started/locally/) and 
 [OpenFOAM](https://openfoam.org/download/5-0-ubuntu/).)
 
+![Training and neural network architecture overview](resources/overview.jpg)
+
 ## Data generation
 
 Note that you can skip the next two steps if you download the training
