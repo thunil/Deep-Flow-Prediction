@@ -12,7 +12,7 @@ Contributing authors:
 *N. Thuerey, K. Weissenow, H. Mehrotra, N. Mainali, L. Prantl, Xiangyu Hu*
 
 You can also check out our TUM lab website with additional physics-based deep learning works at
-<https://ge.in.tum.de/research/>
+<https://ge.in.tum.de/research/>.
 
 ![An example inference result](resources/teaser.jpg)
 
@@ -124,7 +124,11 @@ for the RANS data sets. In addition, the network architecture should be applicab
 PDE solutions.
 
 Let us know if things don't work, or if you find ways to make it work even better :) !
-The authors, <https://ge.in.tum.de/>
+The authors
+
+[Thuerey Group](https://ge.in.tum.de/) , 
+[Hu Group](https://www.aer.mw.tum.de/abteilungen/komplexe-fluide/) , 
+[TUM](https://www.tum.de)
 
 ![TUM](resources/TUM.png)
 
