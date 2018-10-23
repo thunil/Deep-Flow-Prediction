@@ -6,7 +6,7 @@ It contains code for data generation, network training, and evaluation.
 Linux is highly recommended, and assumed as OS the following.
 
 The accompanying paper can soon be found here:
-<https://arxiv.org>
+<https://arxiv.org/abs/1810.08217>
 
 Contributing authors:
 *N. Thuerey, K. Weissenow, H. Mehrotra, N. Mainali, L. Prantl, Xiangyu Hu*
