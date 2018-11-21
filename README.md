@@ -5,7 +5,7 @@ _Deep Flow Prediction_ is a framework for fluid flow
 It contains code for data generation, network training, and evaluation.
 Linux is highly recommended, and assumed as OS the following.
 
-The accompanying paper can soon be found here:
+Full details can be found in the accompanying paper:
 <https://arxiv.org/abs/1810.08217>
 
 Contributing authors:
@@ -112,8 +112,9 @@ This can come in handy for automated runs with varying parameters.
 Below you can download a large-scale training data set, and the test data set
 used in the accompanying paper, as well as pre-trained models:
 
-* a reduced data set with 6.4k samples plus test data: <http://ge.in.tum.de/download/data_6k.tar.gz>
-* ... more will be made available here soon
+* Reduced data set with 6.4k samples plus test data (2GB): <http://ge.in.tum.de/download/data_6k.tar.gz>
+* Full data set with 53.8k samples plus test data (10GB): <http://138.246.224.34/index.php/s/m1459172> 
+  (thanks to mediaTUM <http://doi.org/10.14459/2018mp1459172>)
 
 ![Additional inference results, download full resolution as PNG via the link below](resources/mixed_exp7_selection.jpg)
 <https://ge.in.tum.de/research/>
