@@ -39,10 +39,6 @@ saveL1 = False
 
 ##########################
 
-# NT_DEBUG , remove
-iterations = 5000
-
-
 prefix = ""
 if len(sys.argv)>1:
     prefix = sys.argv[1]
