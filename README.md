@@ -113,9 +113,9 @@ Below you can download a large-scale training data set, and the test data set
 used in the accompanying paper, as well as pre-trained models:
 
 * Reduced data set with 6.4k samples plus test data (2GB): <https://dataserv.ub.tum.de/s/m1470791/download?path=%2F&files=data_6k.tar.gz>
-  (or via mediaTUM <https://mediatum.ub.tum.de/1470791>)
+  (or via mediaTUM <https://dataserv.ub.tum.de/index.php/s/m1470791>)
 * Full data set with 53.8k samples plus test data (10GB): <https://dataserv.ub.tum.de/s/m1459172/download?path=%2F&files=data_full.tar.gz>
-  (or via mediaTUM <http://doi.org/10.14459/2018mp1459172>)
+  (or via mediaTUM <https://dataserv.ub.tum.de/index.php/s/m1459172>)
 
 ![Additional inference results, download full resolution as PNG via the link below](resources/mixed_exp7_selection.jpg)
 <https://ge.in.tum.de/research/>
