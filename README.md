@@ -107,15 +107,20 @@ In addition, the `DfpNet.py` file is worth a look: it contains most of the non-s
 Note that both the `runTrain.py` and  `runTest.py` scripts also accept a prefix as command line argument. 
 This can come in handy for automated runs with varying parameters.
 
-# Data sets
+# Data sets and Models
 
 Below you can download a large-scale training data set, and the test data set
 used in the accompanying paper, as well as pre-trained models:
 
-* Reduced data set with 6.4k samples plus test data (2GB): <https://dataserv.ub.tum.de/s/m1470791/download?path=%2F&files=data_6k.tar.gz>
+* Reduced data set with 6.4k samples plus test data (1.2GB): <https://dataserv.ub.tum.de/s/m1470791/download?path=%2F&files=data_6k.tar.gz>
   (or via mediaTUM <https://dataserv.ub.tum.de/index.php/s/m1470791>)
 * Full data set with 53.8k samples plus test data (10GB): <https://dataserv.ub.tum.de/s/m1459172/download?path=%2F&files=data_full.tar.gz>
   (or via mediaTUM <https://dataserv.ub.tum.de/index.php/s/m1459172>)
+
+The following pre-trained models are available:
+
+* A smaller model (1.9m weights, i.e exp=5) trained with 1.6k regular samples: <https://ge.in.tum.de/download/2019-deepFlowPred/model_data05_exp50>
+* A large model (30.9m weights, i.e. exp=7) trained with 51k mixed samples: <https://ge.in.tum.de/download/2019-deepFlowPred/model_mata10_exp70>
 
 ![Additional inference results, download full resolution as PNG via the link below](resources/mixed_exp7_selection.jpg)
 <https://ge.in.tum.de/research/>
