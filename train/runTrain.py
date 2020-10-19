@@ -44,9 +44,8 @@ if len(sys.argv)>1:
     prefix = sys.argv[1]
     print("Output prefix: {}".format(prefix))
 
-autoIter   = False
-dropout    = 0.
-doLoad     = ""
+dropout    = 0.      # note, the original runs from https://arxiv.org/abs/1810.08217 used slight dropout, but the effect is minimal; conv layers "shouldn't need" dropout, hence set to 0 here.
+doLoad     = ""      # optional, path to pre-trained model
 
 print("LR: {}".format(lrG))
 print("LR decay: {}".format(decayLr))
