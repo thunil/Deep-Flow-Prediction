@@ -25,7 +25,7 @@ if len(sys.argv)>1:
     prefix = sys.argv[1]
     print("Output prefix: {}".format(prefix))
 
-expo = 3
+expo = 5
 dataset = TurbDataset(None, mode=TurbDataset.TEST, dataDirTest="../data/test/")
 testLoader = DataLoader(dataset, batch_size=1, shuffle=False)
 

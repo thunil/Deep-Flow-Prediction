@@ -5,14 +5,29 @@ _Deep Flow Prediction_ is a framework for fluid flow
 It contains code for data generation, network training, and evaluation.
 Linux is highly recommended, and assumed as OS the following.
 
-Full details can be found in the accompanying paper:
-<https://arxiv.org/abs/1810.08217>
+Full details can be found in the accompanying AIAA Journal paper:
+"Deep learning methods for Reynolds-averaged Navier-Stokes simulations of airfoil flows", pre-print:
+<https://arxiv.org/abs/1810.08217>.
 
-Contributing authors:
-*N. Thuerey, K. Weissenow, H. Mehrotra, N. Mainali, L. Prantl, Xiangyu Hu*
+Authors:
+*N. Thuerey, K. Weissenow, L. Prantl, Xiangyu Hu*
+With additional code contributions from:
+*H. Mehrotra, N. Mainali*
 
-You can also check out our TUM lab website with additional physics-based deep learning works at
-<https://ge.in.tum.de/research/>.
+For additional physics-based deep learning works please check out 
+<https://ge.in.tum.de/publications/>, and <https://github.com/tum-pbs?tab=repositories>.
+
+If you find this codebase useful, please cite our paper via:
+```
+@article{thuerey2020deepFlowPred,
+  title={Deep learning methods for Reynolds-averaged Navier--Stokes simulations of airfoil flows},
+  author={Thuerey, Nils and Wei{\ss}enow, Konstantin and Prantl, Lukas and Hu, Xiangyu},
+  journal={AIAA Journal}, year={2020},
+  volume={58}, number={1}, pages={25--36},
+  publisher={American Institute of Aeronautics and Astronautics}
+}
+```
+
 
 ![An example inference result](resources/teaser.jpg)
 
@@ -72,10 +87,12 @@ fields.
 ![Training and neural network architecture overview](resources/overview.jpg)
 
 Switch to the directory containing the training scripts, i.e., `../train/`,
-and execute `python ./runTrain.py`. By default, this will execute a short training  run
-with 10k iterations, loading all data that is available in `../data/train`. The L1 
+and execute `python ./runTrain.py`. By default, this will execute a short training run
+with 10k iterations on the GPU, loading all data that is available in `../data/train`. The L1 
 validation loss is printed during training, and should decrease significantly.
 Once the script has finished, it will save the trained model as `modelG`.
+
+If you don't have a working GPU, you can use 'runTrainCpu.py' to train a smaller model on the CPU.
 
 A sample image will be generated for each epoch in the `results_train` directory.
 Optionally, you can also save txt files with the loss progression (see `saveL1` in the script).
@@ -87,6 +104,8 @@ To compute relative inference errors for a test data set, you can use the `./run
 By default, it assumes that the test data samples (with the same file format as the training samples)
 are located in `../data/test`. Hence, you either have to generate data in a new directory with the
 `dataGen.py` script from above, or download the test data set via the link below.
+
+The model exponent `expo` is set in the `runTest.py` script, so e.g. make sure to reduce it to 3 when evaluating a model trained by 'runTrainCpu.py'.
 
 Once the test data is in place, execute `python ./runTest.py`. This script can compute accuracy 
 evaluations for a range of models, it will automatically evaluate the test samples for all existing model files
