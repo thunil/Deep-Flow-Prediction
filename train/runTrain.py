@@ -101,11 +101,8 @@ for epoch in range(epochs):
 
     netG.train()
     L1_accum = 0.0
-    samples_accum = 0
     for i, traindata in enumerate(trainLoader, 0):
         inputs_cpu, targets_cpu = traindata
-        current_batch_size = targets_cpu.size(0)
-
         targets_cpu, inputs_cpu = targets_cpu.float().cuda(), inputs_cpu.float().cuda()
         inputs.data.resize_as_(inputs_cpu).copy_(inputs_cpu)
         targets.data.resize_as_(targets_cpu).copy_(targets_cpu)
@@ -127,7 +124,6 @@ for epoch in range(epochs):
 
         lossL1viz = lossL1.item()
         L1_accum += lossL1viz
-        samples_accum += current_batch_size
 
         if i==len(trainLoader)-1:
             logline = "Epoch: {}, batch-idx: {}, L1: {}\n".format(epoch, i, lossL1viz)
@@ -139,8 +135,6 @@ for epoch in range(epochs):
     L1val_accum = 0.0
     for i, validata in enumerate(valiLoader, 0):
         inputs_cpu, targets_cpu = validata
-        current_batch_size = targets_cpu.size(0)
-
         targets_cpu, inputs_cpu = targets_cpu.float().cuda(), inputs_cpu.float().cuda()
         inputs.data.resize_as_(inputs_cpu).copy_(inputs_cpu)
         targets.data.resize_as_(targets_cpu).copy_(targets_cpu)
