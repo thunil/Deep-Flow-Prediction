@@ -25,7 +25,7 @@ if len(sys.argv)>1:
     prefix = sys.argv[1]
     print("Output prefix: {}".format(prefix))
 
-expo = 5
+expo = 3
 dataset = TurbDataset(None, mode=TurbDataset.TEST, dataDirTest="../data/test/")
 testLoader = DataLoader(dataset, batch_size=1, shuffle=False)
 
@@ -142,7 +142,8 @@ for si in range(25):
     avgLoss += lossPer_accum
     losses.append(lossPer_accum)
 
-avgLoss /= len(losses)
-lossStdErr = np.std(losses) / math.sqrt(len(losses))
-log(lf, "Averaged relative error and std dev:   %f , %f " % (avgLoss,lossStdErr) )
+if len(losses)>1:
+	avgLoss /= len(losses)
+	lossStdErr = np.std(losses) / math.sqrt(len(losses))
+	log(lf, "Averaged relative error and std dev across models:   %f , %f " % (avgLoss,lossStdErr) )
 

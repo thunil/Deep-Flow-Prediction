@@ -29,7 +29,7 @@ lrG = 0.0006
 # decay learning rate?
 decayLr = True
 # channel exponent to control network size
-expo = 5
+expo = 3
 # data set config
 prop=None # by default, use all from "../data/train"
 #prop=[1000,0.75,0,0.25] # mix data from multiple directories
@@ -58,8 +58,6 @@ print("Random seed: {}".format(seed))
 random.seed(seed)
 np.random.seed(seed)
 torch.manual_seed(seed)
-torch.cuda.manual_seed_all(seed)
-#torch.backends.cudnn.deterministic=True # warning, slower
 
 # create pytorch data object with dfp dataset
 data = dataset.TurbDataset(prop, shuffle=1)
@@ -81,17 +79,12 @@ netG.apply(weights_init)
 if len(doLoad)>0:
     netG.load_state_dict(torch.load(doLoad))
     print("Loaded model "+doLoad)
-netG.cuda()
 
 criterionL1 = nn.L1Loss()
-criterionL1.cuda()
-
 optimizerG = optim.Adam(netG.parameters(), lr=lrG, betas=(0.5, 0.999), weight_decay=0.0)
 
 targets = Variable(torch.FloatTensor(batch_size, 3, 128, 128))
 inputs  = Variable(torch.FloatTensor(batch_size, 3, 128, 128))
-targets = targets.cuda()
-inputs  = inputs.cuda()
 
 ##########################
 
@@ -102,9 +95,8 @@ for epoch in range(epochs):
     L1_accum = 0.0
     for i, traindata in enumerate(trainLoader, 0):
         inputs_cpu, targets_cpu = traindata
-        targets_cpu, inputs_cpu = targets_cpu.float().cuda(), inputs_cpu.float().cuda()
-        inputs.data.resize_as_(inputs_cpu).copy_(inputs_cpu)
-        targets.data.resize_as_(targets_cpu).copy_(targets_cpu)
+        inputs.data.copy_(inputs_cpu.float())
+        targets.data.copy_(targets_cpu.float())
 
         # compute LR decay
         if decayLr:
@@ -134,9 +126,8 @@ for epoch in range(epochs):
     L1val_accum = 0.0
     for i, validata in enumerate(valiLoader, 0):
         inputs_cpu, targets_cpu = validata
-        targets_cpu, inputs_cpu = targets_cpu.float().cuda(), inputs_cpu.float().cuda()
-        inputs.data.resize_as_(inputs_cpu).copy_(inputs_cpu)
-        targets.data.resize_as_(targets_cpu).copy_(targets_cpu)
+        inputs.data.copy_(inputs_cpu.float())
+        targets.data.copy_(targets_cpu.float())
 
         outputs = netG(inputs)
         outputs_cpu = outputs.data.cpu().numpy()
