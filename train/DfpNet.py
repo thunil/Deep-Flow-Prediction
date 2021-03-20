@@ -27,7 +27,7 @@ def blockUNet(in_c, out_c, name, transposed=False, bn=True, relu=True, size=4, p
     if not transposed:
         block.add_module('%s_conv' % name, nn.Conv2d(in_c, out_c, kernel_size=size, stride=2, padding=pad, bias=True))
     else:
-        block.add_module('%s_upsam' % name, nn.Upsample(scale_factor=2))
+        block.add_module('%s_upsam' % name, nn.Upsample(scale_factor=2, mode='bilinear')) # Note: old default was nearest neighbor
         # reduce kernel size by one for the upsampling (ie decoder part)
         block.add_module('%s_tconv' % name, nn.Conv2d(in_c, out_c, kernel_size=(size-1), stride=1, padding=pad, bias=True))
     if bn:

@@ -5,8 +5,8 @@ _Deep Flow Prediction_ is a framework for fluid flow
 It contains code for data generation, network training, and evaluation.
 Linux is highly recommended, and assumed as OS the following.
 
-Full details can be found in the accompanying AIAA Journal paper:
-"Deep learning methods for Reynolds-averaged Navier-Stokes simulations of airfoil flows", pre-print:
+Full details can be found in the arXiv paper from 2018 below, which was later on published in the AIAA Journal as
+"Deep learning methods for Reynolds-averaged Navier-Stokes simulations of airfoil flows":
 <https://arxiv.org/abs/1810.08217>.
 
 Authors:
@@ -116,6 +116,14 @@ named `modelG`,
 
 The text output will also be written to a file `testout.txt`. In addition, visualized reference data
 and corresponding inferred outputs are written to `results_test` as PNGs.
+
+## Changes after publication
+
+After the initial version of this paper appeared in 2018 and the AIAA version was finally accepted in 2020, a few smaller updates and improvements were made:
+
+- for symmetry reasons, we switched one convolutional layer of the encoder part to have a kernel size of 4 instead of 2. This doesn't really influence model performance, but matches the decoder.
+
+- the upsampling in the decoder originally used nearest-neighbor sampling by default. The code was updated to use bilinear upsampling now, which visually gives smoother results. However, it does not have a significant influence on the accuracy measurements.
 
 ## Further steps
 
