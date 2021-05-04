@@ -149,6 +149,8 @@ The following pre-trained models are available:
 * A smaller model (1.9m weights, i.e exp=5) trained with 1.6k regular samples: <https://ge.in.tum.de/download/2019-deepFlowPred/model_data05_exp50>
 * A large model (30.9m weights, i.e. exp=7) trained with 51k mixed samples: <https://ge.in.tum.de/download/2019-deepFlowPred/model_mata10_exp70>
 
+Note: these are from the original paper and code release. Hence, the models only work with commit `8a5efa4`.
+
 ![Additional inference results, download full resolution as PNG via the link below](resources/mixed_exp7_selection.jpg)
 <https://ge.in.tum.de/research/>
 
