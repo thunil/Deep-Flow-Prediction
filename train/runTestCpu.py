@@ -67,7 +67,7 @@ class DfpNet(nn.Module):
         channels = int(2 ** channelExponent + 0.5)
 
         self.layer1 = nn.Sequential()
-        self.layer1.add_module('layer1', nn.Conv2d(3, channels, 4, 2, 1, bias=True))
+        self.layer1.add_module('layer1_conv', nn.Conv2d(3, channels, 4, 2, 1, bias=True))
 
         self.layer2 = blockUNet(channels  , channels*2, 'layer2', transposed=False, bn=True,  relu=False, dropout=dropout )
         self.layer2b= blockUNet(channels*2, channels*2, 'layer2b',transposed=False, bn=True,  relu=False, dropout=dropout )
