@@ -82,7 +82,7 @@ direction and one field containing a mask of the airfoil geometry as
 a mask. The last three channels represent the target, containing one pressure and two velocity
 fields. 
 
-summarize, in the TurDataset class the inputs `data.inputs` have the channels [free-stream x, free-stream y, mask], while the
+To summarize, in the TurDataset class the inputs `data.inputs` have the channels [free-stream x, free-stream y, mask], while the
 reference data `data.targets` has the channels [pressure, flow-velocity x, flow-velocity y].
 
 ## Convolutional neural network training
