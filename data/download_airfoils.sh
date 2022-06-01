@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo downloading...
-wget http://m-selig.ae.illinois.edu/ads/archives/coord_seligFmt.tar.gz
+wget http://m-selig.ae.illinois.edu/ads/archives/coord_seligFmt.zip
 
 echo unpacking...
-tar xzf ./coord_seligFmt.tar.gz 
+unzip ./coord_seligFmt.zip
 
 mkdir ./airfoil_database
 mkdir ./airfoil_database_test
@@ -40,7 +40,7 @@ rm naca1.dat
 
 cd ..
 rm -fr ./coord_seligFmt/
-rm ./coord_seligFmt.tar.gz 
+rm ./coord_seligFmt.zip
 
 echo done!
 exit 1
