@@ -14,8 +14,11 @@ Authors:
 With additional code contributions from:
 *H. Mehrotra, N. Mainali*
 
-For additional physics-based deep learning works please check out 
-<https://ge.in.tum.de/publications/>, and <https://github.com/tum-pbs?tab=repositories>.
+To arrive at high-accuracy networks of the same task, please check out our follow 
+up work which makes use of CNNs conditioned on C-shaped meshes:
+<https://github.com/tum-pbs/coord-trans-encoding>.
+Other physics-based deep learning works of our group can be found at
+<https://ge.in.tum.de/publications/>.
 
 If you find this codebase useful, please cite our paper via:
 ```
