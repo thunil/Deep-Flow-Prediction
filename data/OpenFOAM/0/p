@@ -23,21 +23,25 @@ boundaryField
     inlet
     {
         type            freestreamPressure;
+        freestreamValue uniform 0;
     }
 
     exit
     {
         type            freestreamPressure;
+        freestreamValue uniform 0;
     }
 
     top
     {
         type            freestreamPressure;
+        freestreamValue uniform 0;
     }
 
     bottom
     {
         type            freestreamPressure;
+        freestreamValue uniform 0;
     }
 
     aerofoil
