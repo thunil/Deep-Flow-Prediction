@@ -42,7 +42,10 @@ def genMesh(airfoilFile):
                 line = line.replace("LAST_POINT_INDEX", "{}".format(pointIndex-1))
                 outFile.write(line)
 
-    if os.system("gmsh airfoil.geo -3 -o airfoil.msh > /dev/null") != 0:
+    # gmsh 4 writes the MSH 4 format by default, which gmshToFoam cannot read: ask for MSH 2,
+    # and fall back to the original call for gmsh versions that do not know that format name
+    if os.system("gmsh airfoil.geo -3 -format msh2 -o airfoil.msh > /dev/null") != 0 and \
+       os.system("gmsh airfoil.geo -3 -o airfoil.msh > /dev/null") != 0:
         print("error during mesh creation!")
         return(-1)
 
@@ -90,7 +93,16 @@ def outputProcessing(basename, freestreamX, freestreamY, dataDir=output_dir, pfi
     # [5] velocity Y output
     npOutput = np.zeros((6, res, res))
 
-    ar = np.loadtxt(pfile)
+    # newer OpenFOAM versions (e.g. v2606) write both sampled fields into one file,
+    # cloud_p_U.xy, with the columns x y z p Ux Uy Uz; split it into the two layouts used below
+    combined = os.path.join(os.path.dirname(pfile), "cloud_p_U.xy")
+    if not os.path.exists(pfile) and os.path.exists(combined):
+        both = np.loadtxt(combined)
+        arP, arU = both[:, :4], np.delete(both, 3, axis=1)
+    else:
+        arP, arU = np.loadtxt(pfile), np.loadtxt(ufile)
+
+    ar = arP
     curIndex = 0
 
     for y in range(res):
@@ -108,7 +120,7 @@ def outputProcessing(basename, freestreamX, freestreamY, dataDir=output_dir, pfi
                 # fill mask
                 npOutput[2][x][y] = 1.0
 
-    ar = np.loadtxt(ufile)
+    ar = arU
     curIndex = 0
 
     for y in range(res):
